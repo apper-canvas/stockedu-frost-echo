@@ -84,5 +84,6 @@ async getPendingRequests() {
     
     return recentRequests;
   }
+}
 
 export default new RequestService();
