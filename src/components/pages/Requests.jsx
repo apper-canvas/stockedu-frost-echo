@@ -310,9 +310,9 @@ useEffect(() => {
                     </div>
                   )}
                   
-                  {request.status === 'approved' && (
+{request.status === 'approved' && (
                     <div>
-<Button
+                      <Button
                         variant="primary"
                         size="sm"
                         icon="Package"
