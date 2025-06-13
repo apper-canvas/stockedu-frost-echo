@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "itemId": "1",
+    "itemName": "Whiteboard Markers - Black",
+    "requestedBy": "Ms. Sarah Johnson",
+    "quantity": 10,
+    "status": "pending",
+    "notes": "Needed for classroom presentations",
+    "createdAt": "2024-01-15T08:30:00Z"
+  },
+  {
+    "id": "2",
+    "itemId": "3",
+    "itemName": "Science Lab Beakers - 250ml",
+    "requestedBy": "Dr. Michael Chen",
+    "quantity": 6,
+    "status": "approved",
+    "notes": "Required for chemistry experiments next week",
+    "createdAt": "2024-01-14T10:15:00Z"
+  },
+  {
+    "id": "3",
+    "itemId": "5",
+    "itemName": "Cleaning Supplies - Disinfectant",
+    "requestedBy": "Mr. David Wilson",
+    "quantity": 5,
+    "status": "fulfilled",
+    "notes": "Monthly cleaning supply restock",
+    "createdAt": "2024-01-13T14:45:00Z"
+  },
+  {
+    "id": "4",
+    "itemId": "7",
+    "itemName": "Art Supplies - Colored Pencils",
+    "requestedBy": "Ms. Emily Davis",
+    "quantity": 8,
+    "status": "pending",
+    "notes": "Art project for Grade 6 students",
+    "createdAt": "2024-01-12T09:20:00Z"
+  },
+  {
+    "id": "5",
+    "itemId": "8",
+    "itemName": "First Aid Kit Refills",
+    "requestedBy": "Nurse Patricia",
+    "quantity": 3,
+    "status": "approved",
+    "notes": "Low stock alert - urgent replenishment needed",
+    "createdAt": "2024-01-11T11:00:00Z"
+  }
+]

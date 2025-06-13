@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "name": "Office Supplies",
+    "description": "General office and administrative supplies"
+  },
+  {
+    "id": "2",
+    "name": "Lab Equipment",
+    "description": "Scientific laboratory equipment and supplies"
+  },
+  {
+    "id": "3",
+    "name": "Books",
+    "description": "Textbooks and educational materials"
+  },
+  {
+    "id": "4",
+    "name": "Cleaning",
+    "description": "Cleaning and maintenance supplies"
+  },
+  {
+    "id": "5",
+    "name": "Technology",
+    "description": "Computer equipment and technology supplies"
+  },
+  {
+    "id": "6",
+    "name": "Art Supplies",
+    "description": "Art and craft materials"
+  },
+  {
+    "id": "7",
+    "name": "Medical",
+    "description": "First aid and medical supplies"
+  }
+]
