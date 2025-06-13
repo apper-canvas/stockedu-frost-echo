@@ -322,10 +322,10 @@ useEffect(() => {
                       </Button>
                     </div>
                   )}
-                </div>
+</div>
               </motion.div>
             ))}
-</AnimatePresence>
+          </AnimatePresence>
         </div>
       )}
     </div>
