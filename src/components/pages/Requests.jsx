@@ -317,12 +317,11 @@ useEffect(() => {
                         size="sm"
                         icon="Package"
                         onClick={() => handleStatusChange(request.id, 'fulfilled')}
-                      >
-                        Mark Fulfilled
+Mark Fulfilled
                       </Button>
                     </div>
                   )}
-</div>
+                </div>
               </motion.div>
             ))}
           </AnimatePresence>
