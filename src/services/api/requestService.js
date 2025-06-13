@@ -66,7 +66,23 @@ class RequestService {
     return this.data
       .filter(request => request.status === 'pending')
       .map(request => ({ ...request }));
-  }
 }
+
+  async getNotifications() {
+    await delay(200);
+    const recentRequests = this.data
+      .filter(request => request.status !== 'pending')
+      .slice(0, 5)
+      .map(request => ({
+        id: `request-${request.id}`,
+        type: 'request_status',
+        title: `Request ${request.status}`,
+        message: `${request.itemName} (${request.quantity} units)`,
+        createdAt: request.createdAt,
+        data: request
+      }));
+    
+    return recentRequests;
+  }
 
 export default new RequestService();

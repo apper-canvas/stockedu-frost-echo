@@ -132,5 +132,41 @@ export const clamp = (value, min, max) => {
 };
 
 export const sleep = (ms) => {
-  return new Promise(resolve => setTimeout(resolve, ms));
+return new Promise(resolve => setTimeout(resolve, ms));
+};
+
+export const groupNotificationsByDate = (notifications) => {
+  const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  return notifications.reduce((groups, notification) => {
+    const notifDate = new Date(notification.createdAt);
+    let groupKey;
+
+    if (isToday(notifDate)) {
+      groupKey = 'Today';
+    } else if (isYesterday(notifDate)) {
+      groupKey = 'Yesterday';
+    } else {
+      groupKey = format(notifDate, 'MMM d, yyyy');
+    }
+
+    if (!groups[groupKey]) {
+      groups[groupKey] = [];
+    }
+    groups[groupKey].push(notification);
+    return groups;
+  }, {});
+};
+
+export const getNotificationIcon = (type, severity) => {
+  const icons = {
+    low_stock: severity === 'critical' ? 'AlertCircle' : 'AlertTriangle',
+    request_status: 'FileText',
+    system: 'Info',
+    default: 'Bell'
+  };
+  
+  return icons[type] || icons.default;
 };

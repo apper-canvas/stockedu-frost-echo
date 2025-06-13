@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ApperIcon from '@/components/ApperIcon';
+import NotificationCenter from '@/components/molecules/NotificationCenter';
 import { routeArray } from '@/config/routes';
-
 const Layout = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -14,7 +14,7 @@ const Layout = () => {
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
-      {/* Mobile Header */}
+{/* Mobile Header */}
       <header className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-surface-200 z-40">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
@@ -22,12 +22,16 @@ const Layout = () => {
           </div>
           <h1 className="text-xl font-bold font-display text-surface-900">StockEdu</h1>
         </div>
-        <button
-          onClick={toggleMobileMenu}
-          className="p-2 rounded-lg hover:bg-surface-100 transition-colors"
-        >
-          <ApperIcon name={isMobileMenuOpen ? "X" : "Menu"} className="w-6 h-6 text-surface-700" />
-        </button>
+        
+        <div className="flex items-center space-x-2">
+          <NotificationCenter />
+          <button
+            onClick={toggleMobileMenu}
+            className="p-2 rounded-lg hover:bg-surface-100 transition-colors"
+          >
+            <ApperIcon name={isMobileMenuOpen ? "X" : "Menu"} className="w-6 h-6 text-surface-700" />
+          </button>
+        </div>
       </header>
 
       {/* Mobile Menu Overlay */}
@@ -42,17 +46,20 @@ const Layout = () => {
       )}
 
       <div className="flex-1 flex overflow-hidden">
-        {/* Desktop Sidebar */}
+{/* Desktop Sidebar */}
         <aside className="hidden lg:flex w-64 bg-surface-50 border-r border-surface-200 flex-col z-40">
           <div className="p-6 border-b border-surface-200">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
-                <ApperIcon name="GraduationCap" className="w-6 h-6 text-white" />
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
+                  <ApperIcon name="GraduationCap" className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-xl font-bold font-display text-surface-900">StockEdu</h1>
+                  <p className="text-sm text-surface-600">Inventory Management</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-xl font-bold font-display text-surface-900">StockEdu</h1>
-                <p className="text-sm text-surface-600">Inventory Management</p>
-              </div>
+              <NotificationCenter />
             </div>
           </div>
           
