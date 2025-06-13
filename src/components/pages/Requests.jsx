@@ -327,7 +327,7 @@ useEffect(() => {
             ))}
           </AnimatePresence>
         </div>
-      )}
+)}
     </div>
   );
 };
