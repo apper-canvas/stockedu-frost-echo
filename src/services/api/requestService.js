@@ -61,12 +61,12 @@ class RequestService {
     return this.update(id, { status });
   }
 
-  async getPendingRequests() {
+async getPendingRequests() {
     await delay(200);
     return this.data
       .filter(request => request.status === 'pending')
       .map(request => ({ ...request }));
-}
+  }
 
   async getNotifications() {
     await delay(200);
