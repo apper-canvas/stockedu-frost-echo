@@ -10,7 +10,6 @@ import ErrorState from '@/components/molecules/ErrorState';
 import SkeletonLoader from '@/components/molecules/SkeletonLoader';
 import RequestForm from '@/components/organisms/RequestForm';
 import { requestService } from '@/services';
-import { formatDate } from '@/utils/helpers';
 
 const Requests = () => {
   const [requests, setRequests] = useState([]);
@@ -19,9 +18,28 @@ const Requests = () => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [showForm, setShowForm] = useState(false);
 
-  useEffect(() => {
+useEffect(() => {
     loadRequests();
   }, []);
+
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === 'Escape' && showForm) {
+        setShowForm(false);
+      }
+    };
+
+    if (showForm) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [showForm]);
 
   const loadRequests = async () => {
     setLoading(true);
@@ -135,9 +153,9 @@ const Requests = () => {
           >
             Refresh
           </Button>
-          <Button
+<Button
             icon="Plus"
-            onClick={() => setShowForm(!showForm)}
+            onClick={() => setShowForm(true)}
             size="sm"
           >
             New Request
@@ -145,21 +163,49 @@ const Requests = () => {
         </div>
       </div>
 
-      {/* Create Request Form */}
+      {/* Request Modal */}
       <AnimatePresence>
         {showForm && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <RequestForm
-              onSuccess={() => {
-                loadRequests();
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
                 setShowForm(false);
-              }}
-            />
+              }
+            }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.2 }}
+              className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between p-6 border-b border-surface-200">
+                <h2 className="text-xl font-semibold text-surface-900">
+                  Create New Request
+                </h2>
+                <button
+                  onClick={() => setShowForm(false)}
+                  className="p-2 hover:bg-surface-100 rounded-lg transition-colors"
+                >
+                  <ApperIcon name="X" className="w-5 h-5 text-surface-400" />
+                </button>
+              </div>
+              <div className="p-6">
+                <RequestForm
+                  onSuccess={() => {
+                    loadRequests();
+                    setShowForm(false);
+                  }}
+                />
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
