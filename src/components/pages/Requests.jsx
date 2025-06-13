@@ -10,6 +10,7 @@ import ErrorState from '@/components/molecules/ErrorState';
 import SkeletonLoader from '@/components/molecules/SkeletonLoader';
 import RequestForm from '@/components/organisms/RequestForm';
 import { requestService } from '@/services';
+import { formatDate } from '@/utils/helpers';
 
 const Requests = () => {
   const [requests, setRequests] = useState([]);
@@ -152,15 +153,14 @@ useEffect(() => {
             size="sm"
           >
             Refresh
-          </Button>
-<Button
+</Button>
+          <Button
             icon="Plus"
             onClick={() => setShowForm(true)}
             size="sm"
           >
             New Request
           </Button>
-        </div>
       </div>
 
       {/* Request Modal */}
